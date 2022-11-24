@@ -2,6 +2,11 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.WriteLine("J = Jasmine");
+        Console.WriteLine("G = Globe Amaranth");
+        Console.WriteLine("O = Orchid ");
+        Console.WriteLine("R = Rose");
+        Console.Write("Input flowers : ");
         int z = 1, x = -1;
         CircularLinkedList<char> flower = new CircularLinkedList<char>();
         do{
@@ -33,7 +38,7 @@ class Program
                 flower.Remove(x);
                 x--;  
                 }
-                
+
                 else if(flower.Get(x+1) == flower.Get(x-1) && flower.GetLength() > 3) 
                 {
                 Console.WriteLine("Ivalid pattern");
