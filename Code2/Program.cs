@@ -2,55 +2,65 @@ class Program
 {
     static void Main(string[] args)
     {
-        Queue<int> Ss = new Queue<int>();
-        Queue<int> Ms = new Queue<int>();
-        Queue<int> Ls = new Queue<int>();
-        Char Size = 'L';
-        while(Size == 'S'|| Size == 'M'|| Size == 'L'){
-            Size = Char.Parse(Console.ReadLine());
-            if(Size == 'S'){
-                Ls.Push(3);
+        int z = 1, x = -1;
+        CircularLinkedList<char> fruit = new CircularLinkedList<char>();
+        Queue<char> queue = new Queue<char>();
+        Console.Write("Input size : ");
+        do{
+            x++;
+            fruit.Add(char.Parse(Console.ReadLine()));
+            if(fruit.Get(x) != 'L' && fruit.Get(x) != 'M' && fruit.Get(x) != 'S')
+            {
+            z = 1;
             }
-            else if(Size == 'M'){
-                Ls.Push(2);
-                for(int i = 0; i < 3; i++){
-                    Ms.Push(2);
-                }
+
+            else if(fruit.Get(x) == 'L')
+            {
+            queue.Push('1');
+            z = 0;
             }
-            else if(Size == 'M'){
-                Ls.Push(2);
-                for(int i = 0; i < 3; i++){
-                    Ms.Push(2);
-                }
+
+            else if(fruit.Get(x) == 'M')
+            {
+            queue.Push('2');
+            z = 0;
             }
-            else if(Size == 'L'){
-                Ls.Push(1);
-                for(int i = 0; i < 2; i++){
-                    Ms.Push(2);
-                }
-                for(int i = 0; i < 6; i++){
-                    Ss.Push(3);
-                }
+
+            else if(fruit.Get(x) == 'S')
+            {
+            queue.Push('3');
+            z = 0;
             }
         }
-        
-    }
-    static void output(Queue<int> Ss,Queue<int> Ms,Queue<int> Ls)
-    {
-    Console.Write("---");
-    for(int n =0; n<Ss.GetLength(); n++)
-    {
-        Console.Write("{0}",Ss.Get(n));
-    }
-    for(int n =0; n<Ms.GetLength(); n++)
-    {
-        Console.Write("{0}",Ms.Get(n));
-    }
-    for(int n =0; n<Ls.GetLength(); n++)
-    {
-        Console.Write("{0}",Ls.Get(n));
-    }
-    Console.WriteLine("");
-    Console.WriteLine("Input : ");
+        while(z == 0);
+
+        int a = 0;
+        int b = 0;
+        while(a == 0)
+        {
+        for(b = 0; b < queue.GetLength(); b++)
+        {
+            if(queue.Get(b) == '1')
+            {
+              queue.Push('2');
+              queue.Push('2');
+            }
+            else if(queue.Get(b) == '2')
+            {
+              queue.Push('3');
+              queue.Push('3');
+              queue.Push('3');
+            }
+        }
+        for( b = 0; b < queue.GetLength(); b++)
+        {
+            Console.Write(queue.Get(b));
+        }
+            
+            if(b == queue.GetLength())
+            {
+              a = 1;
+            }
+        }
     }
 }
